@@ -1,0 +1,76 @@
+#include"iomanip"
+#include"iostream"
+#include"limits"
+#include"cmath"
+#include"vector"
+#include"algorithm"
+#include"list"
+#include"queue"
+#include"stack"
+#include"set"
+#include"unordered_set"
+#include"map"
+#include"unordered_map"
+#include"string"
+#include"cstring"
+#include"assert.h"
+using namespace std;
+#define ff first
+#define ss second
+#define all(v) v.begin(),v.end()
+#define mp make_pair
+#define pb push_back
+#define mset(a,b) memset(a,b,sizeof(a))
+typedef long long ll;
+typedef long double ld;
+typedef pair<int,int> pii;
+typedef pair<ll,ll> pll;
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+	ll n,p,q,r;
+	cin>>n>>p>>q>>r;
+	//ll ma=-1e18,mi=1e18;
+	ll a1=0,a2=0,a3=0;
+	vector<ll>re(n);
+	for(int i=0;i<n;++i)
+	{
+		cin>>re[i];
+	}
+	a1=re[0]*p;a2=re[0]*q;a3=re[0]*r;
+	ll ans=a1+a2+a3;
+	ll i1=0,i2=0,i3=0;
+	for(int i=1;i<n;++i)
+	{
+		ll xx=(p+q+r)*re[i];//shift i
+		ll yy=a1+(q+r)*re[i];//shift j
+		ll zz=a1+a2+r*re[i];//shift k
+
+		ll aa=max(a1+a2+a3,xx,max(yy,zz));
+		ans=max(ans,aa);
+		//cout<<xx<<' '<<aa<<" xx aa\n";
+		if(aa=a1+a2+a3)
+		{
+			;
+		}
+		else if(aa==xx)
+		{
+			a1=p*re[i];
+			a2=q*re[i];
+			a3=r*re[i];
+		}
+		else if(aa==yy)
+		{
+			a2=q*re[i];
+			a3=r*re[i];
+		}
+		else
+		{
+			a3=r*re[i];
+		}
+		//ans=max(ans,aa);
+		//cout<<ans<<" ans\n";
+	}
+	cout<<ans<<'\n';
+}

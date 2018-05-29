@@ -1,0 +1,32 @@
+#include"iostream"
+#include"cmath"
+#include"vector"
+#include"algorithm"
+#include"list"
+#include"set"
+#include"map"
+#include"string"
+#include"cstring"
+#include"iomanip"
+using namespace std;
+typedef long long ll;
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    ll m,b;
+    cin>>m>>b;
+    ll ans=0;
+    for(int i=0;i<1e8;++i)
+    {
+    	int x=76+82;
+    	int y=x+5;
+    }
+    for(ll i=b;i>=0;--i)
+    {
+    	ll x=m*(b-i),y=i;
+    	ll sum=x*(x+1)/2*(y+1)+y*(y+1)/2*(x+1);
+    	ans=max(ans,sum);
+    }
+    cout<<ans<<'\n';
+}
